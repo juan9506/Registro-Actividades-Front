@@ -1,0 +1,22 @@
+#table{
+    padding-top: 3%;
+    text-align: center;
+}
+
+button{
+    margin: 1px;
+}
+
+label{
+    text-align: left;
+}
+
+h5{
+    margin-left:auto;
+    text-transform: uppercase;
+}
+
+h1{
+    text-align: center;
+    padding-top: 2%;
+}

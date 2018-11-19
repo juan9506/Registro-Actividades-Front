@@ -1,0 +1,9 @@
+#tabla{
+    padding-top: 3%;
+    text-align: center;
+}
+
+.container > div{
+    padding-left: 0;
+    margin-left: 0;
+}

@@ -1,0 +1,81 @@
+<div class="container">
+    <h1>Grupos</h1>
+  <table class="table table-responsive" id="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Curso</th>
+        <th>Modalidad</th>
+        <th># Alumnos</th>
+        <th>Docente</th>
+        <th>Semestre</th>
+        <th>Estado</th>
+        <th># Horas</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let grupo of grupos">
+        <td style="text-align:left;">{{grupo.curso.nombre}}</td>
+        <td>{{grupo.modalidad}}</td>
+        <td>{{grupo.num_alumnos}}</td>
+        <td>{{grupo.docente.nombre}}</td>
+        <td>{{grupo.curso.semestre.periodo}}</td>
+        <td>{{grupo.curso.semestre.estado}}</td>
+        <td>{{grupo.curso.intensidad_horaria}}</td>
+        <td>
+          <button class="btn btn-info btn-sm" title="Agregar actividad" data-toggle="modal" data-target="#ModalAgregar" (click)="registrarGrupo(grupo.id)">
+            <i class="fa fa-calendar-plus-o"></i>
+          </button>
+          <button class="btn btn-danger btn-sm" title="Eliminar"><i class="fa fa-trash-o"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="ModalAgregar">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Actividad</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-group row">
+            <label for="nombre" class="col-4 col-form-label">Nombre</label>
+            <div class="col-8">
+              <input class="form-control" type="text" id="nombre" required>
+            </div>
+          </div>
+          <div class="form-group row">
+              <label for="tipo" class="col-4 col-form-label">Tipo</label>
+              <div class="col-8">
+                <select class="form-control" id="tipo">
+                  <option value="Clase Magistral">Clase Magistral</option>
+                  <option value="Examen">Examen</option>
+                  <option value="Taller">Taller</option>
+                  <option value="Asesoria">Asesoria</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+                <label for="horas" class="col-4 col-form-label">Horas</label>
+                <div class="col-8">
+                  <input class="form-control" type="number" id="horas" value="2">
+                </div>
+              </div>
+            <div class="form-group row">
+              <label for="descripcion" class="col-4 col-form-label">Descripcion</label>
+              <div class="col-8">
+                  <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+              </div>
+            </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="agregarActividad()" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>

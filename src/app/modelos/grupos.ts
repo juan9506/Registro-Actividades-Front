@@ -1,0 +1,25 @@
+export class Grupos{
+    id:number;
+    num_alumnos:number;
+    docente:[
+        {id:number},
+        {rol:string},
+        {usuario:string},
+        {clave:string},
+        {nombre:string},
+        {telefono:number},
+        {email:string}
+    ];
+    modalidad:string;
+    curso:[
+        {id:number},
+        {nombre:string},
+        {semestre:[
+            {id:number},
+            {periodo:number},
+            {activo:boolean}
+        ]},
+        {creditos:number},
+        {intensidad_horaria:number}
+    ];
+}

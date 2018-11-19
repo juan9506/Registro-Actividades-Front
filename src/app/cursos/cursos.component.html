@@ -1,0 +1,27 @@
+<div class="container">
+   <table class="table table-responsive" id="tabla">
+    <thead class="thead-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Semestre</th>
+        <th>Estado</th>
+        <th># Creditos</th>
+        <th># Horas</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let curso of cursos">
+        <td style="text-align:left;">{{curso.nombre}}</td>
+        <td>{{curso.semestre.periodo}}</td>
+        <td>{{curso.semestre.estado}}</td>
+        <td>{{curso.creditos}}</td>
+        <td>{{curso.intensidad_horaria}}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" title="Eliminar"><i class="fa fa-trash-o"></i></button>
+        </td>
+      </tr>
+    </tbody>
+   </table>
+</div>
+

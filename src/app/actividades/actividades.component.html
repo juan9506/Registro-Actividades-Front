@@ -1,0 +1,107 @@
+<div class="container">
+  <h1>Actividades</h1>
+  <table class="table table-responsive" id="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Curso</th>
+        <th>Creacion</th>
+        <th>Culminacion</th>
+        <th>Estado</th>
+        <th title="Horas empleadas en esta actividad">Horas</th>
+        <th>Accion</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let actividad of actividades">
+        <td style="text-align:left;">{{actividad.nombre}}</td>
+        <td style="text-align:left;">{{actividad.grupo.curso.nombre}}</td>
+        <td>{{actividad.fecha_creacion | date}}</td>
+        <td>{{actividad.fecha_culminacion}}</td>
+        <td>{{actividad.estado}}</td>
+        <td>{{actividad.horas_empleadas}}</td>
+        <td>
+          <button class="btn btn-info btn-sm" title="Ver detalles" data-toggle="modal" data-target="#detalles" (click)="fillModal(actividad, actividad.grupo.curso.nombre, true)"><i class="fa fa-eye"></i></button>
+          <button class="btn btn-secondary btn-sm" title="Editar" (click)="fillModal(actividad, actividad.grupo.curso.nombre, false)" data-toggle="modal" data-target="#detalles"><i class="fa fa-edit"></i></button>
+          <button class="btn btn-danger btn-sm" title="Eliminar" id="eliminar" (click)="eliminarActividad(actividad.id)"><i class="fa fa-trash-o"></i></button>
+        </td>
+        <div class="modal fade" id="detalles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header" >
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="form-group row">
+                    <label for="nombre" class="col-4 col-form-label">Nombre</label>
+                    <div class="col-8">
+                      <input class="form-control" type="text" id="nombre">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="curso" class="col-4 col-form-label">Curso</label>
+                    <div class="col-8">
+                      <input class="form-control" type="text" id="curso">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="creacion" class="col-4 col-form-label">Fecha de creacion</label>
+                    <div class="col-8">
+                      <input class="form-control" type="text" id="creacion">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="culminacion" class="col-4 col-form-label">Fecha culminacion</label>
+                    <div class="col-8">
+                      <input class="form-control" type="text" id="culminacion">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="tipo" class="col-4 col-form-label">Tipo</label>
+                    <div class="col-8">
+                      <select class="form-control" id="tipo">
+                        <option value="Clase Magistral">Clase Magistral</option>
+                        <option value="Examen">Examen</option>
+                        <option value="Taller">Taller</option>
+                        <option value="Asesoria">Asesoria</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="estado" class="col-4 col-form-label">Estado</label>
+                    <div class="col-8">
+                      <select class="form-control" id="estado">
+                        <option value="Activa">Activa</option>
+                        <option value="Finalizada">Finalizada</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="horas" class="col-4 col-form-label">Horas empleadas</label>
+                    <div class="col-8">
+                      <input class="form-control" type="number" id="horas">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="descripcion" class="col-4 col-form-label">Descripcion</label>
+                    <div class="col-8">
+                        <textarea class="form-control" id="descripcion" rows="3"></textarea>
+                    </div>
+                  </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="actualizarActividad()" data-dismiss="modal" id="guardar">
+                  Guardar Cambios
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
